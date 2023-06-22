@@ -8,15 +8,21 @@
 </head>
 
 <body>
-  <input id="number" type="number" placeholder="input angka"> <br><br>
-  <button id="generate-segitiga" onclick="generateSegitiga()">Generate Segitiga</button>
-  <button id="generate-ganjil" onclick="generateGanjil()">Generate Bilangan Ganjil</button>
-  <button id="generate-prima" onclick="generatePrima()">Generate Bilangan Prima</button>
-  <h4>Result</h4>
+  <input id="number" type="number" placeholder="input angka" onchange="updateNumber(this)"> <br><br>
+  <button onclick="generateSegitiga()">Generate Segitiga</button>
+  <button onclick="generateGanjil()">Generate Bilangan Ganjil</button>
+  <button onclick="generatePrima()">Generate Bilangan Prima</button>
+  <h3>Result</h3>
   <p id="result"></p>
   <script>
+    let textResult = document.getElementById("result");
+    let number = 0;
+
+    function updateNumber(n) {
+      number = n.value;
+    }
+
     function generateSegitiga() {
-      let number = document.getElementById("number").value;
       let result = [];
       for (let i = 0; i < number.length; i++) {
         temp = number[i];
@@ -25,20 +31,18 @@
         }
         result.push(temp)
       }
-      document.getElementById("result").innerHTML = result.join("<br>");
+      textResult.innerHTML = result.join("<br>");
     }
 
     function generateGanjil() {
-      let number = document.getElementById("number").value;
       let result = [];
       for (let i = 1; i < number; i += 2) {
         result.push(i);
       }
-      document.getElementById("result").innerHTML = result.join("<br>");
+      textResult.innerHTML = result.join("<br>");
     }
 
     function generatePrima() {
-      let number = document.getElementById("number").value;
       let result = [];
 
       for (let i = 2; i <= number; i++) {
@@ -53,7 +57,7 @@
           result.push(i);
         }
       }
-      document.getElementById("result").innerHTML = result.join("<br>");
+      textResult.innerHTML = result.join("<br>");
     }
   </script>
 </body>
