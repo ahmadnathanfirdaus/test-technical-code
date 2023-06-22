@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input id="number" type="number" placeholder="input angka"> <br><br>
+  <button id="generate-segitiga" onclick="generateSegitiga()">Generate Segitiga</button>
+  <button id="generate-ganjil" onclick="generateGanjil()">Generate Bilangan Ganjil</button>
+  <button id="generate-prima" onclick="generatePrima()">Generate Bilangan Prima</button>
+  <h4>Result</h4>
+  <p id="result"></p>
+  <script>
+    function generateSegitiga() {
+      let number = document.getElementById("number").value;
+      let result = [];
+      for (let i = 0; i < number.length; i++) {
+        temp = number[i];
+        for (let j = 0; j <= i; j++) {
+          temp += "0";
+        }
+        result.push(temp)
+      }
+      document.getElementById("result").innerHTML = result.join("<br>");
+    }
+
+    function generateGanjil() {
+      let number = document.getElementById("number").value;
+      let result = [];
+      for (let i = 1; i < number; i += 2) {
+        result.push(i);
+      }
+      document.getElementById("result").innerHTML = result.join("<br>");
+    }
+
+    function generatePrima() {
+      let number = document.getElementById("number").value;
+      let result = [];
+
+      for (let i = 2; i <= number; i++) {
+        let flag = 0;
+        for (let j = 2; j < i; j++) {
+          if (i % j == 0) {
+            flag = 1;
+            break;
+          }
+        }
+        if (flag == 0) {
+          result.push(i);
+        }
+      }
+      document.getElementById("result").innerHTML = result.join("<br>");
+    }
+  </script>
+</body>
+
+</html>
